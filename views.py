@@ -8,7 +8,6 @@ import subprocess
 from django.contrib.auth.decorators import permission_required
 from django.http import HttpResponse
 from django.db import connection
-
 from django.conf import settings
 
 
@@ -43,9 +42,8 @@ def dump_db(request):
     """
 
     db = settings.DATABASES['default']
-    dbfile = 'static/%s.sql' % db.get('NAME')
+    dbfile = 'static/{}.sql'.format(db.get('NAME'))
     dumpcmd = 'mysqldump'
-    # dumpcmd = '/usr/bin/mysqldump'
     dumpdb = '{dumpcmd} --user={user} ' \
              '--password={password} ' \
              '--host={host} ' \
@@ -75,8 +73,6 @@ def dump_db(request):
         return HttpResponse(u'<h3>系统异常!</h3><br><p>%s</p>' % e)
     return response
 
-from workflow.data import init_workflow_data
 
 def init_data(request):
-    init_workflow_data()
-    return HttpResponse("ok")
+    return HttpResponse("todo")
