@@ -10,9 +10,9 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-dbhelper',
-    version='0.1.0',
+    version=__import__('dbhelper').__version__,
     author='pitou',
-    author_email='564034165@qq.com',
+    author_email='pitou@qq.com',
     description='A simple Django app for db manage.',
     long_description=README,
     keywords='django dbhelper',
